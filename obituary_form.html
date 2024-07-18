@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Obituary</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: lightgray;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: darkblue;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Submit Obituary</h1>
+        <form id="obituaryForm" method="POST" action="/submit_obituary">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" required>
+            </div>
+            <div class="form-group">
+                <label for="date_of_death">Date of Death:</label>
+                <input type="date" id="date_of_death" name="date_of_death" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('obituaryForm').addEventListener('submit', function (event) {
+            var form = event.target;
+            var name = form.name.value;
+            var date_of_birth = form.date_of_birth.value;
+            var date_of_death = form.date_of_death.value;
+            var content = form.content.value;
+            var author = form.author.value;
+            if (!name || !date_of_birth || !date_of_death || !content || !author) {
+                alert('Please fill in all fields.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>
